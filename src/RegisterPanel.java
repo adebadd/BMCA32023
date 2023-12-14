@@ -124,10 +124,10 @@ public class RegisterPanel extends JPanel {
         lblNewLabel.setFont(new Font("Arial", Font.BOLD, 12));
         add(lblNewLabel);
 
-        JLabel lblLogin = new JLabel("Login");
+        JLabel lblLogin = new JLabel("<html><u>Login</u></html>");
         lblLogin.setBounds(464, 513, 32, 14);
         lblLogin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        lblLogin.setForeground(new Color(0, 0, 0));
+        lblLogin.setForeground(new Color(255, 255, 255));
         lblLogin.setFont(new Font("Arial", Font.BOLD, 12));
         lblLogin.addMouseListener(new MouseAdapter() {
           
@@ -155,11 +155,14 @@ public class RegisterPanel extends JPanel {
         String name = tFName.getText().trim(); // Trim to remove leading/trailing spaces
         String email = tFEmail.getText().trim();
         String password = new String(pFPassword.getPassword()).trim();
-
+        tFName.setText("");
+        tFEmail.setText("");
+        pFPassword.setText("");
         // Check if any field is empty
         if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "All fields are required.", "Registration Error", JOptionPane.ERROR_MESSAGE);
             return; // Stop further processing
+            
         }
 
         // Check for duplicate email
@@ -174,6 +177,7 @@ public class RegisterPanel extends JPanel {
             // Switch to login panel
             mainFrame.switchToPanel("LoginPanel");
         }
+        
     }
     
 

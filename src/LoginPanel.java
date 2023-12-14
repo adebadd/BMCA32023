@@ -112,8 +112,8 @@ public class LoginPanel extends JPanel {
           lblDontHaveAn.setBounds(313, 462, 130, 14);
           add(lblDontHaveAn);
           
-          JLabel lblRegister = new JLabel("Register");
-          lblRegister.setForeground(Color.BLACK);
+          JLabel lblRegister = new JLabel("<html><u>Register</u></html>");
+          lblRegister.setForeground(new Color(255, 255, 255));
           lblRegister.setFont(new Font("Arial", Font.BOLD, 12));
           lblRegister.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
           lblRegister.setBounds(445, 462, 52, 14);
@@ -133,8 +133,11 @@ public class LoginPanel extends JPanel {
 
     
     private void handleLogin(ArrayList<User> userList) {
+    	
         String email = tFEmail.getText().trim();
         String password = new String(pFPassword.getPassword()).trim();
+        tFEmail.setText("");
+        pFPassword.setText("");
 
         if (email.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter both email and password.", "Login Error", JOptionPane.ERROR_MESSAGE);
@@ -154,7 +157,9 @@ public class LoginPanel extends JPanel {
             mainFrame.switchToPanel("HomePanel");
         } else {
             JOptionPane.showMessageDialog(this, "Invalid email or password.", "Login Error", JOptionPane.ERROR_MESSAGE);
+            
         }
+        
     }
     
       
